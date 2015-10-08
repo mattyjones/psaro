@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>reveal.js - The HTML Presentation Framework</title>
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background="images/title_slide.jpg">
+          <h1 style="font-family: 'TF';">Hubots</h1>
+
+          <p style="font-size: 40px; font-family: 'TF';">more than meets the eye</p>
+        </section>
+
+        <section id="fragments">
+          <h2>whoami</h2>
+          <p class="fragment">I am an operational tool and infrastructure developer at Yieldbot who is lazy by nature.
+          <img style="float: left;" src="images/hot_rod.jpg"></p>
+          <p class="fragment">I don't even wait till I do something twice before scripting it</p>
+        </section>
+
+        <section id="fragments">
+          <p style="font-size: 80px;">man ChatOps | more</p>
+          <section id="fragments">
+            <p class="fragment"> <img style="float: right;" src="images/spike.jpg"> It's not all about the bots!</p>
+            <p class="fragment">ChatOps brings common operational tasks and the conversations surrounding them into a single shared view</p>
+            <p class="fragment">Conversation-driven development and operations</p>
+          </section>
+          <section id="fragments">
+            <ul>
+              <li class="fragment">Github Releases</li>
+              <li class="fragment">Asana Tasks</li>
+              <li class="fragment">IFTTT</li>
+              <li class="fragment">Jenkins Builds</li>
+            </ul>
+          </section>
+          <section id="fragments">
+          <img style="float: left;" src="images/soundwave.jpg">
+            <p>Be careful of the Decepticons!</p>
+            <ul>
+              <li class="fragment">Should everyone in the channel access the bot?</li> 
+              <li class="fragment">Should the bot play God?</li>
+              <li class="fragment">Mobile devices?</li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <h2>Tools</h2>
+          <section id="fragments">
+          <h2>Slack</h2>
+            <p>Web based chat client capable of supporting large teams and serval different types of integrations including multiple bots </p>
+          </section>
+          <section id="fragments">
+            <h2>Hubot</h2>
+            <ul>
+            <li class="fragment"> developed at Github</li>
+            <li class="fragment"> written in Node.js </li>
+            <li class="fragment"> scripts can be written in js or cs </li>
+            <li class="fragment"> large open source community constantly submitting new scripts</li>
+          </section>
+          <section id="fragments">
+            <h2>Heroku</h2>
+            <ul>
+              <li class="fragment"> cloud application platform</li>
+              <li class="fragment"> 100+ service add-ons</li>
+              <li class="fragment">easily scalable</li>
+            </ul>
+          </section>
+          <section id="fragments">
+            <h2>Node.Js</h2>
+            <ul>
+              <li class="fragment">JavaScript runtime </li>
+              <li class="fragment">event-driven</li>
+              <li class="fragment">non-blocking I/O model</li>
+              </ul>
+          </section>
+        </section>
+
+        <section>
+          <h2>Ship It</h2>
+            <ol>
+            <li class="fragment">setup Slack</li>
+            <li class="fragment">setup dev environment</li>
+            <li class="fragment">setup Heroku</li>
+            <li class="fragment">launch it</li>
+            <li class="fragment">code / debug it</li>
+        </section>
+
+        <section>
+          <h2>Roll Out</h2>
+          <section>
+          <h4> Setup Slack </h4>
+            <ul>
+            <li>create a slack account</li>
+            <li>create a channel</li>
+            <li>setup integration</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Setup Development Environment</h4>
+              <pre><code data-trim>
+vagrant up
+vagrant ssh
+curl https://raw.githubusercontent.com/creationix/nvm/v0.16.1/install.sh | sh
+nvm install 0.12.7
+npm install -g hubot coffee-script yo generator-hubot
+              </pre></code>
+          </section>
+          <section>
+            <h4>Create A Bot</h4>
+              <pre><code data-trim>
+mkdir ~/bot
+cd ~/bot
+yo hubot
+npm install hubot-slack --save
+              </pre></code>
+            </ul>
+          </section>
+          <section>
+            <h4>Setup Heroku</h4>
+              <pre><code data-trim>
+sudo wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+git init && git add --all && git commit -m 'initial commit'
+heroku create optimus-prime
+heroku addons:create redistogo:nano --app optimus-prime
+npm install hubot-heroku-keepalive --save
+heroku config:set HUBOT_HEROKU_KEEPALIVE_URL=https://optimus-prime.herokuapp.com --app optimus-prime
+heroku config:set HEROKU_URL=https://optimus-prime.herokuapp.com --app optimus-prime
+heroku config:set HUBOT_SLACK_TOKEN=xoxb-11995843430-XPP92BkpOEUrmsGxgEeXLy7L --app optimus-prime
+            </code></pre>
+          </section>
+          <section>
+            <h4>Pencils Down Class</h4>
+            <pre><code data-trim>
+git push heroku master
+heroku ps:scale web=1
+            </pre></code>
+          </section>
+        </section>
+
+        <section data-background="images/trans.gif">
+        </section>
+
+        <section id="fragments">
+          <h2>But I Wanted Fortress Maximus</h2>
+          <section>
+            <p style="font-size: 40px;"> .hear && .respond </p>
+            <pre><code>
+module.exports = (robot) ->
+  robot.hear /roll out/i, (res) ->
+    # Optimus will respond to any string containing 'roll out'   
+
+  robot.respond /Autobots, transform and roll out/i, (res) ->
+    # You need to directly call Optimus
+    </code></pre>
+    <img src="images/giphy.gif">
+    </section>
+    <section>
+      <p style="font-size: 40px;"> .send || .reply || .emote </p>
+      <pre><code>
+module.exports = (robot) ->
+  robot.hear /roll out/i, (res) ->
+  res.reply "Who gave you the leadership matrix"
+
+robot.respond /Autobots, transform and roll out/i, (res) ->
+  res.send "Let's kick some Decepticon butt"
+
+robot.hear /Predacons, merge to become Predaking/i, (res) ->
+  res.emote "[Predacons transform into Predaking]"
+      </code></pre>
+    </section>
+    <section>
+      <p style="font-size: 40px;"> capturing data </p>
+      <pre><code>
+robot.respond /arise (.*)/i, (res) ->
+  autobot = res.match[1]
+  if autobot is " Rodimus Prime"
+    res.reply "I knew you had potential"
+  else
+    res.send "One day, an Autobot shall rise from our ranks, 
+    and use the power of the Matrix to light our darkest hour."
+      </code></pre>
+    </section>
+    <section>
+      <p style="font-size: 40px;"> external api calls </p>
+      <pre><code>
+  data = JSON.stringify({
+    autobot_city: 'transform'
+  })
+  robot.http("https://rc-springer")
+    .header('Content-Type', 'application/json')
+    .post(data) (err, res, body) ->
+      </code></pre>
+    </section>
+  </section>
+
+    <section id="fragments">
+      <h2> local testing and debugging</h2>
+      <p class="fragment">
+      Run locally `bin/hubot`</p>
+      <p class="fragment">
+      Debug remote bot locally `heroku logs`</p>
+    </section>
+        
+        <section>
+          <h2>Additional Resources</h2>
+          <ul>
+            <li><a href="https://github.com/github/hubot/blob/master/docs/scripting.md">Hubot Scripting Primer</a></li>
+            <li><a href="https://github.com/hubot-scripts/hubot-heroku-keepalive">hubot-heroku-keepalive</li>
+            <li><a href="https://hubot.github.com/docs/">Hubot Docs</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Images</h2>
+          <ul>
+            <li>https://www.tumblr.com/search/autobot%20gif</a></li>
+            <li>http://giphy.com/gifs/out-roll-autobots-BZaGpT3O0EMiA</li>
+            <li>http://statici.behindthevoiceactors.com/behindthevoiceactors/_img/chars/char_5207.jpg</li>
+            <li>http://usercontent2.hubimg.com/6183365_f520.jpg</li>
+            <li>http://usercontent2.hubimg.com/6183365_f520.jpg</li>
+            <li>http://vignette3.wikia.nocookie.net/transformers/images/0/0e/Lolpuberty.jpg/revision/latest?cb=20070116055254</li>
+          </ul>
+        </section>
+        <section>
+        <h2>Questions?</h2>
+        <ul>
+          <li>Slack: <a href="https://bosops-invite.herokuapp.com/">BosOps</a>
+          <li>Twitter: <a href="https://twitter.com/DevopsMatt">@DevopsMatt</a></li>
+          <li>Github: <a href="https://github.com/mattyjones">mattyjones</a></li>
+          <li>Meetup: <a href="http://www.meetup.com/Boston-Infrastructure-Coders/">Boston Infrastructure Coders</a></li>
+          <li>Yieldbot is <a href="https://www.yieldbot.com/careers/">hiring</a>, come build cool stuff!</li>
+        </ul>
+        <img src ="images/autopan.jpg">
+        </section>
+
+			</div>
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script>
+			Reveal.initialize({
+				controls: true,
+				progress: false,
+				history: false,
+				center: false,
+        touch: true,
+        loop: false,
+        transition: 'convex',
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
