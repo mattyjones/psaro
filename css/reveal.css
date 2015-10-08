@@ -21,7 +21,7 @@ html, body, .reveal div, .reveal span, .reveal applet, .reveal object, .reveal i
 
 @font-face {
   font-family: 'TF';
-  src: local('TF'), url('images/tf.ttf') format('truetype');
+  src: local('TF'), url('../images/tf.ttf') format('truetype');
 }
 
 /*********************************************

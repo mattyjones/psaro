@@ -62,6 +62,10 @@
           </section>
         </section>
 
+        <section data-background="images/trans.gif" data-autoslide="10">
+        <audio data-autoplay src="images/scene.mp3"></audio>
+        </section>
+
         <section>
           <h2>Tools</h2>
           <section id="fragments">
@@ -75,6 +79,7 @@
             <li class="fragment"> written in Node.js </li>
             <li class="fragment"> scripts can be written in js or cs </li>
             <li class="fragment"> large open source community constantly submitting new scripts</li>
+            </ul>
           </section>
           <section id="fragments">
             <h2>Heroku</h2>
@@ -102,6 +107,7 @@
             <li class="fragment">setup Heroku</li>
             <li class="fragment">launch it</li>
             <li class="fragment">code / debug it</li>
+            </ol>
         </section>
 
         <section>
@@ -122,7 +128,7 @@ vagrant ssh
 curl https://raw.githubusercontent.com/creationix/nvm/v0.16.1/install.sh | sh
 nvm install 0.12.7
 npm install -g hubot coffee-script yo generator-hubot
-              </pre></code>
+              </code></pre>
           </section>
           <section>
             <h4>Create A Bot</h4>
@@ -131,8 +137,7 @@ mkdir ~/bot
 cd ~/bot
 yo hubot
 npm install hubot-slack --save
-              </pre></code>
-            </ul>
+              </code></pre>
           </section>
           <section>
             <h4>Setup Heroku</h4>
@@ -152,18 +157,19 @@ heroku config:set HUBOT_SLACK_TOKEN=xoxb-11995843430-XPP92BkpOEUrmsGxgEeXLy7L --
             <pre><code data-trim>
 git push heroku master
 heroku ps:scale web=1
-            </pre></code>
+            </code></pre>
           </section>
         </section>
 
-        <section data-background="images/trans.gif">
+        <section data-background="images/trans.gif" data-autoslide="10">
+        <audio data-autoplay src="images/scene.mp3"></audio>
         </section>
 
         <section id="fragments">
           <h2>But I Wanted Fortress Maximus</h2>
           <section>
             <p style="font-size: 40px;"> .hear && .respond </p>
-            <pre><code>
+            <pre><code data-trim>
 module.exports = (robot) ->
   robot.hear /roll out/i, (res) ->
     # Optimus will respond to any string containing 'roll out'   
@@ -175,7 +181,7 @@ module.exports = (robot) ->
     </section>
     <section>
       <p style="font-size: 40px;"> .send || .reply || .emote </p>
-      <pre><code>
+      <pre><code data-trim>
 module.exports = (robot) ->
   robot.hear /roll out/i, (res) ->
   res.reply "Who gave you the leadership matrix"
@@ -189,7 +195,7 @@ robot.hear /Predacons, merge to become Predaking/i, (res) ->
     </section>
     <section>
       <p style="font-size: 40px;"> capturing data </p>
-      <pre><code>
+      <pre><code data-trim>
 robot.respond /arise (.*)/i, (res) ->
   autobot = res.match[1]
   if autobot is " Rodimus Prime"
@@ -201,7 +207,7 @@ robot.respond /arise (.*)/i, (res) ->
     </section>
     <section>
       <p style="font-size: 40px;"> external api calls </p>
-      <pre><code>
+      <pre><code data-trim>
   data = JSON.stringify({
     autobot_city: 'transform'
   })
@@ -224,14 +230,14 @@ robot.respond /arise (.*)/i, (res) ->
           <h2>Additional Resources</h2>
           <ul>
             <li><a href="https://github.com/github/hubot/blob/master/docs/scripting.md">Hubot Scripting Primer</a></li>
-            <li><a href="https://github.com/hubot-scripts/hubot-heroku-keepalive">hubot-heroku-keepalive</li>
+            <li><a href="https://github.com/hubot-scripts/hubot-heroku-keepalive">hubot-heroku-keepalive</a></li>
             <li><a href="https://hubot.github.com/docs/">Hubot Docs</a></li>
           </ul>
         </section>
         <section>
           <h2>Images</h2>
           <ul>
-            <li>https://www.tumblr.com/search/autobot%20gif</a></li>
+            <li>https://www.tumblr.com/search/autobot%20gif</li>
             <li>http://giphy.com/gifs/out-roll-autobots-BZaGpT3O0EMiA</li>
             <li>http://statici.behindthevoiceactors.com/behindthevoiceactors/_img/chars/char_5207.jpg</li>
             <li>http://usercontent2.hubimg.com/6183365_f520.jpg</li>
@@ -242,7 +248,7 @@ robot.respond /arise (.*)/i, (res) ->
         <section>
         <h2>Questions?</h2>
         <ul>
-          <li>Slack: <a href="https://bosops-invite.herokuapp.com/">BosOps</a>
+          <li>Slack: <a href="https://bosops-invite.herokuapp.com/">BosOps</a></li>
           <li>Twitter: <a href="https://twitter.com/DevopsMatt">@DevopsMatt</a></li>
           <li>Github: <a href="https://github.com/mattyjones">mattyjones</a></li>
           <li>Meetup: <a href="http://www.meetup.com/Boston-Infrastructure-Coders/">Boston Infrastructure Coders</a></li>
@@ -258,11 +264,12 @@ robot.respond /arise (.*)/i, (res) ->
 		<script>
 			Reveal.initialize({
 				controls: true,
-				progress: false,
+				progress: true,
 				history: false,
 				center: false,
         touch: true,
         loop: false,
+        slideNumber: true,
         transition: 'convex',
 				dependencies: [
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
